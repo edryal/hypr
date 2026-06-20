@@ -80,16 +80,17 @@ hl.window_rule({
 	move = { "30", "monitor_h * 0.15" },
 })
 
-hl.window_rule({
-	name = "overlay-rules-for-gpu-screen-recorder-ui",
-	match = { class = "^(gsr-ui)$" },
-	pin = true,
-	float = true,
-	border_size = 0,
-	no_shadow = true,
-	opaque = true,
-	no_blur = true,
-})
+-- too buggy when forced to be an "overlay" just let it do whatever it wants
+-- hl.window_rule({
+-- 	name = "overlay-rules-for-gpu-screen-recorder-ui",
+-- 	match = { class = "^(gsr-ui)$" },
+-- 	persistent_size = true,
+-- 	pin = true,
+-- 	float = true,
+-- 	border_size = 0,
+-- 	move = { 0, 0 },
+-- 	size = { "monitor_w", "monitor_h - 50" },
+-- })
 
 hl.window_rule({
 	name = "xwayland-video-bridge-fixes",
@@ -100,4 +101,26 @@ hl.window_rule({
 	no_blur = true,
 	max_size = { 1, 1 },
 	opacity = 0.0,
+})
+
+hl.window_rule({
+	name = "spawn-goclip-on-cursor",
+	match = { class = "^(com.github.edryal.goclip)$" },
+	pin = true,
+	float = true,
+	border_size = 0,
+	move = { "cursor_x - 30", "cursor_y - 20" },
+})
+
+hl.window_rule({
+	name = "spawn-showmethekey-floating",
+	match = { title = "^(Floating Window - Show Me The Key)$" },
+	pin = true,
+	float = true,
+	opaque = true,
+	decorate = true,
+	-- no_focus = true,
+	border_size = 0,
+	size = { 800, 100 },
+	move = { 1700, 1280 },
 })

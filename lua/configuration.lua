@@ -3,10 +3,15 @@ hl.config({
 		gaps_in = 5,
 		gaps_out = 20,
 		border_size = 2,
-        col = {
-            active_border   = { colors = {"rgba(33ccffee)", "rgba(00ff99ee)"}, angle = 45 },
-            inactive_border = "rgba(595959aa)",
-        },
+		col = {
+			-- RED
+			active_border = { colors = { "rgba(243, 139, 168, 1)", "rgba(243, 139, 168, 1)" }, angle = 45 },
+			inactive_border = "rgba(595959aa)",
+
+			-- ORIGINAL
+			-- active_border = { colors = { "rgba(f38ba8ff)", "rgba(eb6c6cff)" }, angle = 45 },
+			-- inactive_border = "rgba(313244ff)",
+		},
 		resize_on_border = false,
 		allow_tearing = false,
 		layout = "dwindle",
@@ -43,7 +48,9 @@ hl.config({
 		disable_hyprland_logo = true,
 	},
 	input = {
+		-- kb_layout = "us,ro,jp",
 		kb_layout = "us,ro",
+		-- kb_variant = ",std,OADG109A",
 		kb_variant = ",std",
 		kb_model = "",
 		kb_options = "grp:shifts_toggle",
@@ -53,5 +60,13 @@ hl.config({
 		touchpad = {
 			natural_scroll = false,
 		},
+	},
+	debug = {
+		disable_logs = false,
+		gl_debugging = true,
+	},
+	cursor = {
+        -- if this value is false, the cursor won't be visible in vesktop screensharing
+		no_hardware_cursors = true,
 	},
 })

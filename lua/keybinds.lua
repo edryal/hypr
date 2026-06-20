@@ -1,10 +1,11 @@
 local terminal = "kitty"
-local fileManager = "thunar"
+local fileManager = "nautilus --new-window"
 local allMenu = "rofi -show run"
 local menu = "rofi -show drun"
-local powerMenu = "rofi -show power-menu -modi power-menu:rofi-power-menu"
+local powerMenu = "/home/catalin/.config/rofi/powermenu.sh"
+local wallpaperSwitcher = "/home/catalin/.config/rofi/wallpaper-switcher.sh"
 local browser = "/home/catalin/.local/bin/zen"
-local discord = "discord"
+local discord = "discord --ozone-platform=wayland"
 local screenshotSelection = "hyprshot -zm region --clipboard-only"
 local screenshotWindow = "hyprshot -zm window --clipboard-only"
 local screenshotActiveWindow = "hyprshot -m window -m active --clipboard-only"
@@ -12,6 +13,7 @@ local reload = "hyprctl reload"
 local lockscreen = "hyprlock"
 local notificationCenter = "swaync-client -t"
 local reloadNotificationCenterConfig = "swaync-client -R"
+local colorPicker = "hyprpicker --autocopy"
 
 local mainMod = "ALT"
 
@@ -21,25 +23,27 @@ hl.bind(mainMod .. " + SHIFT + S", hl.dsp.exec_cmd(screenshotSelection))
 hl.bind(mainMod .. " + SHIFT + W", hl.dsp.exec_cmd(screenshotWindow))
 hl.bind(mainMod .. " + SHIFT + A", hl.dsp.exec_cmd(screenshotActiveWindow))
 hl.bind(mainMod .. " + SHIFT + P", hl.dsp.exec_cmd(allMenu))
+hl.bind(mainMod .. " + SHIFT + I", hl.dsp.exec_cmd(wallpaperSwitcher))
 
 hl.bind(mainMod .. " + P", hl.dsp.exec_cmd(menu))
 hl.bind(mainMod .. " + W", hl.dsp.exec_cmd(browser))
 hl.bind(mainMod .. " + O", hl.dsp.exec_cmd(discord))
 hl.bind(mainMod .. " + E", hl.dsp.exec_cmd(fileManager))
 hl.bind(mainMod .. " + N", hl.dsp.exec_cmd(notificationCenter))
+hl.bind(mainMod .. " + Y", hl.dsp.exec_cmd(colorPicker))
 hl.bind(mainMod .. " + Q", hl.dsp.window.close())
 hl.bind(mainMod .. " + Escape", hl.dsp.exec_cmd(lockscreen))
 
 hl.bind(mainMod .. " + CONTROL + R", hl.dsp.exec_cmd(reload .. ","))
-hl.bind(mainMod .. " + CONTROL + P", hl.dsp.exec_cmd(powerMenu .. ","))
+hl.bind(mainMod .. " + CONTROL + P", hl.dsp.exec_cmd(powerMenu))
 hl.bind(mainMod .. " + CONTROL + SHIFT + N", hl.dsp.exec_cmd(reloadNotificationCenterConfig))
 hl.bind(mainMod .. " + CONTROL + SHIFT + Q", hl.dsp.exit())
 hl.bind(mainMod .. " + CONTROL + SHIFT + Escape", hl.dsp.exec_cmd("killall waybar || waybar"))
 
 hl.bind(mainMod .. " + F", hl.dsp.window.fullscreen())
-hl.bind(mainMod .. " + M", hl.dsp.window.fullscreen(1))
+hl.bind(mainMod .. " + M", hl.dsp.window.fullscreen({ mode = "maximized", action = "toggle" }))
 hl.bind(mainMod .. " + T", hl.dsp.window.float({ action = "toggle" }))
-hl.bind(mainMod .. " + V", hl.dsp.window.pseudo())
+hl.bind(mainMod .. " + B", require("lua.magnifier"))
 
 -- Move focus with mainMod + arrow keys
 hl.bind(mainMod .. " + left", hl.dsp.focus({ direction = "left" }))
@@ -173,4 +177,4 @@ hl.bind("XF86AudioPrev", hl.dsp.exec_cmd("playerctl previous"), { locked = true 
 
 -- Pass keybinds
 hl.bind("F7", hl.dsp.exec_cmd("socat - unix-connect:/tmp/Spoverlay.sock"))
-hl.bind("SUPER + v", hl.dsp.exec_cmd("cliphist list | rofi -dmenu | cliphist decode | wl-copy"))
+hl.bind("F2", hl.dsp.exec_cmd("goclip --toggle"))
