@@ -1,11 +1,12 @@
 local terminal = "kitty"
-local fileManager = "nautilus --new-window"
+-- local fileManager = "nautilus --new-window"
+local fileManager = "thunar"
 local allMenu = "rofi -show run"
 local menu = "rofi -show drun"
 local powerMenu = "/home/catalin/.config/rofi/powermenu.sh"
 local wallpaperSwitcher = "/home/catalin/.config/rofi/wallpaper-switcher.sh"
 local browser = "/home/catalin/.local/bin/zen"
-local discord = "discord --ozone-platform=wayland"
+local discord = "discord --enable-features=UseOzonePlatform --ozone-platform=wayland"
 local screenshotSelection = "hyprshot -zm region --clipboard-only"
 local screenshotWindow = "hyprshot -zm window --clipboard-only"
 local screenshotActiveWindow = "hyprshot -m window -m active --clipboard-only"
@@ -14,6 +15,7 @@ local lockscreen = "hyprlock"
 local notificationCenter = "swaync-client -t"
 local reloadNotificationCenterConfig = "swaync-client -R"
 local colorPicker = "hyprpicker --autocopy"
+local videoDownloader = "/home/catalin/.config/rofi/video-downloader.sh"
 
 local mainMod = "ALT"
 
@@ -24,6 +26,7 @@ hl.bind(mainMod .. " + SHIFT + W", hl.dsp.exec_cmd(screenshotWindow))
 hl.bind(mainMod .. " + SHIFT + A", hl.dsp.exec_cmd(screenshotActiveWindow))
 hl.bind(mainMod .. " + SHIFT + P", hl.dsp.exec_cmd(allMenu))
 hl.bind(mainMod .. " + SHIFT + I", hl.dsp.exec_cmd(wallpaperSwitcher))
+hl.bind(mainMod .. " + SHIFT + U", hl.dsp.exec_cmd(videoDownloader))
 
 hl.bind(mainMod .. " + P", hl.dsp.exec_cmd(menu))
 hl.bind(mainMod .. " + W", hl.dsp.exec_cmd(browser))
@@ -115,29 +118,28 @@ hl.bind(
 	{ repeating = true }
 )
 
--- Switch workspaces with mainMod + [0-9]
-hl.bind(mainMod .. " + 1", hl.dsp.focus({ workspace = 1 }))
-hl.bind(mainMod .. " + 2", hl.dsp.focus({ workspace = 2 }))
-hl.bind(mainMod .. " + 3", hl.dsp.focus({ workspace = 3 }))
-hl.bind(mainMod .. " + 4", hl.dsp.focus({ workspace = 4 }))
-hl.bind(mainMod .. " + 5", hl.dsp.focus({ workspace = 5 }))
-hl.bind(mainMod .. " + 6", hl.dsp.focus({ workspace = 6 }))
-hl.bind(mainMod .. " + 7", hl.dsp.focus({ workspace = 7 }))
-hl.bind(mainMod .. " + 8", hl.dsp.focus({ workspace = 8 }))
-hl.bind(mainMod .. " + 9", hl.dsp.focus({ workspace = 9 }))
-hl.bind(mainMod .. " + 0", hl.dsp.focus({ workspace = 10 }))
+package.path = package.path .. ";./?.lua;./?/init.lua"
+local smw = require("plugins.split-monitor-workspaces")
+smw.setup({
+	workspace_count = 10,
+	monitor_priority = { "DP-2", "desc:S22R35x" },
+	keep_focused = true,
+	enable_persistent_workspaces = false,
+	link_monitors = false,
+	max_workspaces = {
+		["DP-2"] = 10,
+		["desc:Samsung Electric Company S22R35x"] = 4,
+	},
+})
 
--- Move active window to a workspace with mainMod + SHIFT + [0-9]
-hl.bind(mainMod .. " + SHIFT + 1", hl.dsp.window.move({ workspace = 1 }))
-hl.bind(mainMod .. " + SHIFT + 2", hl.dsp.window.move({ workspace = 2 }))
-hl.bind(mainMod .. " + SHIFT + 3", hl.dsp.window.move({ workspace = 3 }))
-hl.bind(mainMod .. " + SHIFT + 4", hl.dsp.window.move({ workspace = 4 }))
-hl.bind(mainMod .. " + SHIFT + 5", hl.dsp.window.move({ workspace = 5 }))
-hl.bind(mainMod .. " + SHIFT + 6", hl.dsp.window.move({ workspace = 6 }))
-hl.bind(mainMod .. " + SHIFT + 7", hl.dsp.window.move({ workspace = 7 }))
-hl.bind(mainMod .. " + SHIFT + 8", hl.dsp.window.move({ workspace = 8 }))
-hl.bind(mainMod .. " + SHIFT + 9", hl.dsp.window.move({ workspace = 9 }))
-hl.bind(mainMod .. " + SHIFT + 0", hl.dsp.window.move({ workspace = 10 }))
+for i = 1, smw.get_amount_of_workspaces() do
+	local n = tostring(i)
+	if n == "10" then
+		n = "0"
+	end
+	hl.bind(mainMod .. " + " .. n, smw.workspace(n))
+	hl.bind(mainMod .. " + SHIFT + " .. n, smw.move_to_workspace_silent(n))
+end
 
 -- Move/resize windows with mainMod + LMB/RMB and dragging
 hl.bind(mainMod .. " + mouse:272", hl.dsp.window.drag(), { mouse = true })
