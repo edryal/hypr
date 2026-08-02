@@ -13,7 +13,7 @@ hl.config({
 			-- inactive_border = "rgba(313244ff)",
 		},
 		resize_on_border = false,
-		allow_tearing = false,
+		allow_tearing = true,
 		layout = "dwindle",
 	},
 	decoration = {
@@ -67,6 +67,6 @@ hl.config({
 	},
 	cursor = {
         -- if this value is false, the cursor won't be visible in vesktop screensharing
-		no_hardware_cursors = true,
+		no_hardware_cursors = false,
 	},
 })

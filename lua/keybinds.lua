@@ -12,8 +12,6 @@ local screenshotWindow = "hyprshot -zm window --clipboard-only"
 local screenshotActiveWindow = "hyprshot -m window -m active --clipboard-only"
 local reload = "hyprctl reload"
 local lockscreen = "hyprlock"
-local notificationCenter = "swaync-client -t"
-local reloadNotificationCenterConfig = "swaync-client -R"
 local colorPicker = "hyprpicker --autocopy"
 local videoDownloader = "/home/catalin/.config/rofi/video-downloader.sh"
 
@@ -32,14 +30,12 @@ hl.bind(mainMod .. " + P", hl.dsp.exec_cmd(menu))
 hl.bind(mainMod .. " + W", hl.dsp.exec_cmd(browser))
 hl.bind(mainMod .. " + O", hl.dsp.exec_cmd(discord))
 hl.bind(mainMod .. " + E", hl.dsp.exec_cmd(fileManager))
-hl.bind(mainMod .. " + N", hl.dsp.exec_cmd(notificationCenter))
 hl.bind(mainMod .. " + Y", hl.dsp.exec_cmd(colorPicker))
 hl.bind(mainMod .. " + Q", hl.dsp.window.close())
 hl.bind(mainMod .. " + Escape", hl.dsp.exec_cmd(lockscreen))
 
 hl.bind(mainMod .. " + CONTROL + R", hl.dsp.exec_cmd(reload .. ","))
 hl.bind(mainMod .. " + CONTROL + P", hl.dsp.exec_cmd(powerMenu))
-hl.bind(mainMod .. " + CONTROL + SHIFT + N", hl.dsp.exec_cmd(reloadNotificationCenterConfig))
 hl.bind(mainMod .. " + CONTROL + SHIFT + Q", hl.dsp.exit())
 hl.bind(mainMod .. " + CONTROL + SHIFT + Escape", hl.dsp.exec_cmd("killall waybar || waybar"))
 
@@ -122,8 +118,9 @@ package.path = package.path .. ";./?.lua;./?/init.lua"
 local smw = require("plugins.split-monitor-workspaces")
 smw.setup({
 	workspace_count = 10,
-	monitor_priority = { "DP-2", "desc:S22R35x" },
+	monitor_priority = { "DP-2", "desc:Samsung Electric" },
 	keep_focused = true,
+    enable_notifications = false,
 	enable_persistent_workspaces = false,
 	link_monitors = false,
 	max_workspaces = {

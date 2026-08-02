@@ -13,6 +13,9 @@ hl.env("TERMINAL", "kitty")
 hl.env("TERM", "xterm-256color")
 hl.env("MOZ_ENABLE_WAYLAND", "1")
 
+-- Screensharing fix
+hl.env("WLR_DRM_NO_MODIFIERS", "1")
+
 -- Discoverlay
 hl.env("BOT_TOKEN", "")
 hl.env("TARGET_USER_ID", "")
