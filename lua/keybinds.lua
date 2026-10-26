@@ -176,4 +176,4 @@ hl.bind("XF86AudioPrev", hl.dsp.exec_cmd("playerctl previous"), { locked = true 
 
 -- Pass keybinds
 hl.bind("F7", hl.dsp.exec_cmd("socat - unix-connect:/tmp/Spoverlay.sock"))
-hl.bind("F2", hl.dsp.exec_cmd("goclip --toggle"))
+hl.bind("F6", hl.dsp.exec_cmd("goclip --toggle"))

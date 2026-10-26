@@ -124,15 +124,3 @@ hl.window_rule({
     size = { 800, 100 },
     move = { 1700, 1280 },
 })
-
-hl.window_rule({
-    match = { class = "cs2" },
-    immediate = true,
-    no_shadow = true,
-    no_blur = true,
-})
-
-hl.window_rule({
-    match = { class = "gamescope" },
-    immediate = true
-})

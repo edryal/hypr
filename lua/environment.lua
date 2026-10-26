@@ -14,7 +14,8 @@ hl.env("TERM", "xterm-256color")
 hl.env("MOZ_ENABLE_WAYLAND", "1")
 
 -- Screensharing fix
-hl.env("WLR_DRM_NO_MODIFIERS", "1")
+-- Causes hyprland to crash sometimes in CS2
+-- hl.env("WLR_DRM_NO_MODIFIERS", "1")
 
 -- Discoverlay
 hl.env("BOT_TOKEN", "")

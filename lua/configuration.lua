@@ -1,7 +1,12 @@
 hl.config({
 	general = {
-		gaps_in = 5,
-		gaps_out = 20,
+		gaps_in = 3,
+		gaps_out = {
+            top = 5,
+            left = 12,
+            right = 12,
+            bottom = 12
+        },
 		border_size = 2,
 		col = {
 			-- RED
@@ -58,12 +63,12 @@ hl.config({
 		follow_mouse = 1,
 		sensitivity = -0.6,
 		touchpad = {
-			natural_scroll = false,
+			natural_scroll = true,
 		},
 	},
 	debug = {
 		disable_logs = false,
-		gl_debugging = true,
+		gl_debugging = false,
 	},
 	cursor = {
         -- if this value is false, the cursor won't be visible in vesktop screensharing
