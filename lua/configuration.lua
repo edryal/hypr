@@ -1,25 +1,16 @@
 hl.config({
     general = {
         gaps_in = 3,
-        gaps_out = {
-            top = 5,
-            left = 12,
-            right = 12,
-            bottom = 12
-        },
+        gaps_out = { top = 5, left = 12, right = 12, bottom = 12 },
         border_size = 2,
         col = {
-            -- RED
             active_border = { colors = { "rgba(243, 139, 168, 1)", "rgba(243, 139, 168, 1)" }, angle = 45 },
             inactive_border = "rgba(595959aa)",
-
-            -- ORIGINAL
-            -- active_border = { colors = { "rgba(f38ba8ff)", "rgba(eb6c6cff)" }, angle = 45 },
-            -- inactive_border = "rgba(313244ff)",
         },
         resize_on_border = false,
         allow_tearing = true,
         layout = "dwindle",
+        snap = { enabled = true, respect_gaps = true }
     },
     decoration = {
         rounding = 10,
@@ -45,6 +36,12 @@ hl.config({
     misc = {
         force_default_wallpaper = 0,
         disable_hyprland_logo = true,
+
+        focus_on_activate = true,
+        allow_session_lock_restore = true,
+
+        enable_swallow = true,
+        swallow_regex = "^(kitty)$"
     },
     cursor = { no_hardware_cursors = 0 },
     input = {
@@ -57,8 +54,6 @@ hl.config({
         sensitivity = 0,
         touchpad = { natural_scroll = true },
     },
-    debug = {
-        disable_logs = false,
-        gl_debugging = false,
-    }
+    ecosystem = { no_update_news = true, no_donation_nag = true },
+    debug = { disable_logs = false, gl_debugging = false }
 })
