@@ -118,19 +118,28 @@ hl.bind(
     { repeating = true }
 )
 
+local MAIN = "desc:ViewSonic Corporation VX2758A-QHD"
+local SECOND = "desc:Samsung Electric Company S22R35x"
+
 local smw = require("plugins.split-monitor-workspaces")
 smw.setup({
     workspace_count = 10,
-    monitor_priority = { "DP-2", "desc:Samsung Electric" },
+    monitor_priority = { MAIN, SECOND },
     keep_focused = true,
     enable_notifications = false,
     enable_persistent_workspaces = false,
     link_monitors = false,
     max_workspaces = {
-        ["DP-2"] = 10,
-        ["desc:Samsung Electric Company S22R35x"] = 4,
+        [MAIN] = 10,
+        [SECOND] = 6,
     },
 })
+
+hl.on("monitor.added", function(monitor)
+    if "desc:" .. (monitor.description or ""):sub(1, #MAIN - 5) ~= MAIN then
+        hl.dispatch(hl.dsp.focus({ monitor = MAIN }))
+    end
+end)
 
 for i = 1, smw.get_amount_of_workspaces() do
     local n = tostring(i)

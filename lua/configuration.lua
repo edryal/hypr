@@ -43,7 +43,10 @@ hl.config({
         enable_swallow = true,
         swallow_regex = "^(kitty)$"
     },
-    cursor = { no_hardware_cursors = 0 },
+    cursor = {
+        no_hardware_cursors = 0,
+        default_monitor = "desc:ViewSonic Corporation VX2758A-QHD",
+    },
     input = {
         kb_layout = "us,ro",
         kb_variant = ",std",
