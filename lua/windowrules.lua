@@ -40,25 +40,25 @@ hl.window_rule({
 hl.window_rule({
     name = "spawn-spoverlay-top-right",
     match = { title = "^(spoverlay — Spoverlay)$" },
-    move = { "monitor_w * 0.81", "48" },
+    move = { "monitor_w * 0.86", "64" },
 }):set_enabled(true)
 
 hl.window_rule({
     name = "spawn-spoverlay-top-left",
     match = { title = "^(spoverlay — Spoverlay)$" },
-    move = { 30, 48 },
+    move = { 26, 64 },
 }):set_enabled(false)
 
 hl.window_rule({
     name = "spawn-spoverlay-bottom-right",
     match = { title = "^(spoverlay — Spoverlay)$" },
-    move = { "monitor_w * 0.81", "monitor_h * 0.9" },
+    move = { "monitor_w * 0.86", "monitor_h * 0.88" },
 }):set_enabled(false)
 
 hl.window_rule({
     name = "spawn-spoverlay-bottom-left",
     match = { title = "^(spoverlay — Spoverlay)$" },
-    move = { "30", "monitor_h * 0.9" },
+    move = { "26", "monitor_h * 0.88" },
 }):set_enabled(false)
 
 hl.window_rule({
