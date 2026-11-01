@@ -1,4 +1,4 @@
 hl.layer_rule({
-	match = { namespace = "waybar" },
-	blur = true,
+    match = { namespace = "waybar" },
+    blur = true,
 })

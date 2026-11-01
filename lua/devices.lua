@@ -1,4 +1,4 @@
 hl.device({
-	name = "epic-mouse-v1",
-	sensitivity = -0.3,
+    name = "epic-mouse-v1",
+    sensitivity = -1,
 })
