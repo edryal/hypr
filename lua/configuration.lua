@@ -30,6 +30,7 @@ hl.config({
             vibrancy = 0.1696,
         },
     },
+    render = { cm_auto_hdr = 0 },
     animations = { enabled = true },
     dwindle = { preserve_split = true },
     master = { new_status = "master" },

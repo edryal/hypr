@@ -5,7 +5,6 @@ hl.monitor({
     position = "0x0",
     scale = 1,
     vrr = 2,
-    cm = "srgb",
 })
 
 hl.monitor({
@@ -14,5 +13,4 @@ hl.monitor({
     mode = "1920x1080@75Hz",
     position = "-1920x180",
     scale = 1,
-    cm = "srgb",
 })
