@@ -3,7 +3,7 @@ local mainMod = "ALT"
 
 local terminal = "kitty"
 local fileManager = "thunar"
-local browser = home .. "/.local/bin/zen"
+local browser = "helium-browser"
 local discord = "discord --enable-features=UseOzonePlatform --ozone-platform=wayland"
 
 local menu = "rofi -show drun"

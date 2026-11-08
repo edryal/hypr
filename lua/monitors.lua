@@ -5,6 +5,13 @@ hl.monitor({
     position = "0x0",
     scale = 1,
     vrr = 2,
+
+    cm = "edid",
+    bitdepth = 10,
+    max_luminance = 400,
+    max_avg_luminance = 400,
+    min_luminance = 0.1,
+    sdr_max_luminance = 250,
 })
 
 hl.monitor({

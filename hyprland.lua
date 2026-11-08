@@ -1,7 +1,6 @@
 require("lua.monitors")
 require("lua.animations")
 require("lua.configuration")
-require("lua.devices")
 require("lua.environment")
 require("lua.keybinds")
 require("lua.windowrules")
