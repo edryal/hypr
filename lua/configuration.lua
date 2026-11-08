@@ -31,12 +31,13 @@ hl.config({
         },
     },
     render = { cm_auto_hdr = 2 },
-    animations = { enabled = true },
+    animations = { enabled = true, workspace_wraparound = true },
     dwindle = { preserve_split = true },
     master = { new_status = "master" },
     misc = {
         force_default_wallpaper = 0,
         disable_hyprland_logo = true,
+        animate_manual_resizes = true,
 
         focus_on_activate = true,
         allow_session_lock_restore = true,
